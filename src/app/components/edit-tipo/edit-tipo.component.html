@@ -1,0 +1,46 @@
+<div class="container">
+        <div class="col-md-12 mt-3">
+            <h1>{{page_title}}</h1>
+            <p *ngIf="status != 'succes'">
+                Actualización de tipo de emergencias para la plataforma de gestion de emergencias
+            </p>
+    
+    
+            <!--Mensajes de ALerta-->
+            <div class="alert alert-success col-md-12" *ngIf="status == 'succes'">
+                El registro se ha actualizado correctamente, <a [routerLink]="['/emergencia/tipos']">Regresar a Listado</a>
+            </div>
+    
+            <div class="alert alert-danger col-md-12" *ngIf="status == 'error'">
+                Error en el registro, Vuelve a intentarlo.
+            </div>
+            <!--Creamos nuestro Formulario-->
+            <form class="col-md-12 ml-0 pl-0" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" autocomplete="off">
+                <div class="form-group">
+                    <label for="name">Titulo</label>
+                    <input type="text" name="titulo" class="form-control" #titulo="ngModel" [(ngModel)]="tipo.titulo" required
+                        >
+    
+                    <small *ngIf="!titulo.valid && titulo.touched" class="invalid-feedback d-block">
+                        El Titulo no es valido
+                    </small>
+                </div>
+    
+                <div class="form-group">
+                    <label for="descripcion">Descripcion</label>
+                    <input type="text" name="descripcion" class="form-control" #descripcion="ngModel" [(ngModel)]="tipo.descripcion"
+                        >
+    
+                    <small *ngIf="!descripcion.valid && descripcion.touched" class="invalid-feedback d-block">
+                        La descripcion no es valido
+                    </small>
+                </div>
+    
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg btn-block" value="Registrate"
+                        [disabled]="registerForm.invalid">Actualizar</button>
+                </div>
+    
+            </form>
+        </div>
+    </div>

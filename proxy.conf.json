@@ -1,0 +1,7 @@
+{
+    "/user/*":{
+        "target": "https://pacific-lowlands-44228.herokuapp.com",
+        "secuere": false,
+        "logLevel": "debug"
+    }
+}

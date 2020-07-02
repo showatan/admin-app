@@ -1,0 +1,12 @@
+<div class="container mt-5">
+    
+    <div class="card mt-5" *ngFor="let emergencia of emergencias, index as id">
+        <h5 class="card-header">{{ emergencia.titulo }}</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{ emergencia.tipo.titulo }}</h5>
+            <p class="card-text">{{ emergencia.detalles }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+</div>

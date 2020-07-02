@@ -1,0 +1,33 @@
+<div class="container">
+    <h2 class="mt-5">{{ page_title }}</h2>
+    <br>
+    <div class="col-md-3 float-right">
+        <a class="btn btn-success btn-md btn-block" [routerLink]="['/emergencia/tipos/create']">+ Crear Tipo</a>
+    </div>
+    <br>
+    <table class="table mt-5">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Descripcón</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tipo of tipos, index as id">
+                <th scope="row">{{ id +1 }}</th>
+                <td>{{ tipo.titulo }}</td>
+                <td>{{ tipo.descripcion }}</td>
+                <td>
+                    <!--Botones de accion-->
+                        
+                            <a [routerLink]="['/emergencia/tipos/update', tipo.id]" class="btn btn-warning mr-2">Editar</a>
+                            <a [routerLink]="['/emergencia/tipos/delete', tipo.id]" class="btn btn-danger">Borrar</a>
+                        
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

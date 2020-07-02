@@ -1,0 +1,123 @@
+<div class="container">
+        <div class="col-md-12 mt-3">
+            <h1>{{page_title}}</h1>
+            <a [routerLink]="['/users']"> Volver a usuarios</a>
+            <p *ngIf="status != 'succes'">
+                Configuracion de Usuario 
+            </p>
+    
+    
+            <!--Mensajes de ALerta-->
+            <div class="alert alert-success col-md-12" *ngIf="status == 'succes'">
+                El registro se ha creado correctamente, <a [routerLink]="['/users']">Regresar a Listado</a>
+            </div>
+    
+            <div class="alert alert-danger col-md-12" *ngIf="status == 'error'">
+                Error en el registro, Vuelve a intentarlo o quiza tu correo ya fue registrado
+            </div>
+            <!--Creamos nuestro Formulario-->
+            <form class="col-md-12 ml-0 pl-0" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" autocomplete="off">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" name="name" class="form-control" #name="ngModel" [(ngModel)]="user.nombre" required
+                        >
+    
+                    <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+                        El nombre no es valido
+                    </small>
+                </div>
+    
+                <div class="form-group">
+                    <label for="surname">Apellidos</label>
+                    <input type="text" name="surname" class="form-control" #surname="ngModel" [(ngModel)]="user.last_name"
+                        >
+    
+                    <small *ngIf="!surname.valid && surname.touched" class="invalid-feedback d-block">
+                        El apellido no es valido
+                    </small>
+                </div>
+    
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="user.email" required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    
+                    <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+                        El correo no es valido
+                    </small>
+                </div>
+    
+                <div class="form-group">
+                        <label for="telefono">Telefono</label>
+                        <input type="number" name="telefono" class="form-control" #telefono="ngModel" [(ngModel)]="user.telefono" required>
+        
+                        <small *ngIf="!telefono.valid && telefono.touched" class="invalid-feedback d-block">
+                            El correo no es valido
+                        </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="registro">No. Registro</label>
+                    <input type="number" name="registro" class="form-control" #registro="ngModel" [(ngModel)]="user.registro" required>
+    
+                    <small *ngIf="!registro.valid && registro.touched" class="invalid-feedback d-block">
+                        El registro no es valido
+                    </small>
+                </div>
+    
+                <div class="form-group">
+                    <label for="dpi">No. DPI</label>
+                    <input type="number" name="dpi" class="form-control" #dpi="ngModel" [(ngModel)]="user.dpi" required>
+    
+                    <small *ngIf="!dpi.valid && dpi.touched" class="invalid-feedback d-block">
+                        El No. de pdi no es valido
+                    </small>
+                </div>
+    
+                <div class="form-group">
+                        <label for="rango">Rango</label>
+                        <select name="rango" #rango="ngModel" [(ngModel)]="user.rango" class="form-control">
+                            <option value="Bombero de 3ra. Clase"> Bombero de 3ra. Clase</option>
+                            <option value="Bombero de 2da. Clase"> Bombero de 2da. Clase</option>
+                            <option value="Bombero de 1ra. Clase"> Bombero de 1ra. Clase</option>
+                            <option value="Sub Oficial de 3ra. Clase"> Sub Oficial de 3ra. Clase</option>
+                            <option value="Sub Oficial de 2da. Clase"> Sub Oficial de 2da. Clase</option>
+                            <option value="Sub Oficial de 1ra. Clase"> Sub Oficial de 1ra. Clase</option>
+                            <option value="Oficial de 3ra. Clase">Oficial de 3ra. Clase</option>
+                            <option value="Oficial de 2da. Clase">Oficial de 2da. Clase</option>
+                            <option value="Oficial de 1ra. Clase">Oficial de 1ra. Clase</option>
+                            <option value="Oficial Mayor de 3ra. Clase">Oficial Mayor de 3ra. Clase</option>
+                            <option value="Oficial Mayor de 2da. Clase">Oficial Mayor de 2da. Clase</option>
+                            <option value="Oficial Mayor de 1ra. Clase">Oficial Mayor de 1ra. Clase</option>
+    
+                        </select>
+                        <small *ngIf="!rango.valid && rango.touched" class="invalid-feedback d-block">
+                            El Rango
+                        </small>
+                </div>
+    
+                <div class="form-group">
+                    <label for="estacion">Estación</label>
+                    <select name="estacion" #idestacion="ngModel" [(ngModel)]="user.idestacion" class="form-control">
+                        <option *ngFor="let estacion of estaciones" value="{{ estacion.id }}">{{ estacion.nombre }}</option>
+                    </select>
+                </div>
+    
+               <!-- <div class="form-group">
+                    <label for="password">Contrasena</label>
+                    <input type="password" name="password" class="form-control" #password="ngModel"
+                        [(ngModel)]="user.password" required>
+    
+                    <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
+                        La contrasena no es valido
+                    </small>
+                </div> -->
+    
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg btn-block" value="Registrate"
+                        [disabled]="registerForm.invalid">Actualizar</button>
+                </div>
+    
+            </form>
+        </div>
+    </div>
