@@ -1,3 +1,3 @@
 export var global = {
-    url: 'http://pacific-lowlands-44228.herokuapp.com/'
+    url: 'https://pacific-lowlands-44228.herokuapp.com/'
 }
