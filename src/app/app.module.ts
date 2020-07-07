@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,11 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { GenTipoComponent } from './components/gen-tipo/gen-tipo.component';
 import { EditTipoComponent } from './components/edit-tipo/edit-tipo.component';
+import { FiltroEmergenciasPipe } from './pipes/filtro-emergencias.pipe';
+import { EstacionesComponent } from './components/estaciones/estaciones.component';
+import { GenEstacionesComponent } from './components/gen-estaciones/gen-estaciones.component';
+import { EditEstacionesComponent } from './components/edit-estaciones/edit-estaciones.component';
+
 
 @NgModule({
   declarations: [
@@ -25,14 +31,19 @@ import { EditTipoComponent } from './components/edit-tipo/edit-tipo.component';
     TiposEmergenciaComponent,
     EditUserComponent,
     GenTipoComponent,
-    EditTipoComponent
+    EditTipoComponent,
+    FiltroEmergenciasPipe,
+    EstacionesComponent,
+    GenEstacionesComponent,
+    EditEstacionesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,47 +1,65 @@
 <div class="container">
-    <h2 class="mt-5">{{ page_title }}</h2>
-    <br>
-            <!--Mensajes de ALerta-->
-            <div class="alert alert-success col-md-12" *ngIf="status == 'success'">
-                El registro se ha eliminado correctamente, <a [routerLink]="['/users']">Regresar a Listado</a>
-            </div>
-    
-            <div class="alert alert-danger col-md-12" *ngIf="status == 'error'">
-                Error en el registro, Vuelve a intentarlo.
-            </div>
-    <br>
 
-    <div class="col-md-3 float-right">
-        <a class="btn btn-success btn-md btn-block" [routerLink]="['register']">+ Crear Usuario</a>
+
+
+    <div class="">
+
+
+        <h2 class="mt-5">{{ page_title }}</h2>
+        <br>
+        <!--Mensajes de ALerta-->
+        <div class="alert alert-success col-md-12" *ngIf="status == 'success'">
+            El registro se ha eliminado correctamente, <a [routerLink]="['/users']">Regresar a Listado</a>
+        </div>
+
+        <div class="alert alert-danger col-md-12" *ngIf="status == 'error'">
+            Error en el registro, Vuelve a intentarlo.
+        </div>
+        <br>
+
+        <form>
+
+            <div class="form-group">
+                <input type="text" placeholder="Buscar..." name="filtrar" class="form-control"
+                    [(ngModel)]="filtroemergencias">
+            </div>
+
+        </form>
+
+
+        <div class="col-md-3 float-right">
+            <a class="btn btn-success btn-md btn-block" [routerLink]="['register']">+ Crear Usuario</a>
+        </div>
+        <br>
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Email</th>
+                    <th scope="col"> Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of usuarios| filtroEmergencias:filtroemergencias, index as id ">
+                    <th scope="row">{{ id +1 }}</th>
+                    <td>{{ user.nombre }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email}}</td>
+                    <td>
+                        <!--Botones de accion-->
+
+                        <a [routerLink]="['edit', user.user_id]" class="btn btn-warning mr-2">Editar</a>
+                        <a [routerLink]="['/users/delete', user.user_id]" class="btn btn-danger">Borrar</a>
+
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
     </div>
-    <br>
-    <table class="table mt-5">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Email</th>
-                <th scope="col"> Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of usuarios, index as id">
-                <th scope="row">{{ id +1 }}</th>
-                <td>{{ user.nombre }}</td>
-                <td>{{ user.last_name }}</td>
-                <td>{{ user.email}}</td>
-                <td>
-                    <!--Botones de accion-->
-                        
-                            <a [routerLink]="['edit', user.user_id]" class="btn btn-warning mr-2">Editar</a>
-                            <a [routerLink]="['/users/delete', user.user_id]" class="btn btn-danger">Borrar</a>
-                        
-                    
-                </td>
-            </tr>
-        </tbody>
-    </table>
-   
 
 </div>

@@ -8,6 +8,9 @@ import { TiposEmergenciaComponent } from './components/tipos-emergencia/tipos-em
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { GenTipoComponent } from './components/gen-tipo/gen-tipo.component';
 import { EditTipoComponent } from './components/edit-tipo/edit-tipo.component';
+import { EstacionesComponent } from './components/estaciones/estaciones.component';
+import { GenEstacionesComponent } from './components/gen-estaciones/gen-estaciones.component';
+import { EditEstacionesComponent } from './components/edit-estaciones/edit-estaciones.component';
 
 
 const routes: Routes = [
@@ -21,7 +24,11 @@ const routes: Routes = [
   {path: 'users/delete/:sure', component: UsuariosComponent},
   {path: 'emergencia/tipos/create', component: GenTipoComponent},
   {path: 'emergencia/tipos/update/:id', component: EditTipoComponent},
-  {path: 'emergencia/tipos/delete/:sure', component: TiposEmergenciaComponent}
+  {path: 'emergencia/tipos/delete/:sure', component: TiposEmergenciaComponent},
+  {path: 'estaciones', component: EstacionesComponent},
+  {path: 'estaciones/create', component: GenEstacionesComponent},
+  {path: 'estaciones/update/:id', component: EditEstacionesComponent},
+
   
 ];
 

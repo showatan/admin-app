@@ -1,0 +1,81 @@
+<div class="container mt-5">
+    <h3>{{ page_title }}</h3>
+
+    <google-map width="100%" height="300px" [center]="center" [zoom]="zoom">
+
+        <map-marker #markerElem [position]="position" [options]="drag" (mapDragend)="click(markerElem)">
+        </map-marker>
+    </google-map>
+    <!--Creamos nuestro Formulario-->
+    <form class="col-md-12 ml-0 pl-0" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" autocomplete="off">
+        <div class="form-group">
+            <label for="noestacion">No. Estación</label>
+            <input type="number" name="noestacion" class="form-control" #noestacion="ngModel"
+                [(ngModel)]="estacion.no_estacion" required>
+
+            <small *ngIf="!noestacion.valid && noestacion.touched" class="invalid-feedback d-block">
+                El Numero no es valido
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" class="form-control" #nombre="ngModel" [(ngModel)]="estacion.nombre"
+                required>
+
+            <small *ngIf="!nombre.valid && nombre.touched" class="invalid-feedback d-block">
+                El Nombre no es valido
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" name="direccion" class="form-control" #direccion="ngModel"
+                [(ngModel)]="estacion.direccion" required>
+
+            <small *ngIf="!direccion.valid && direccion.touched" class="invalid-feedback d-block">
+                La Dirección no es valido
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="text" name="telefono" class="form-control" #telefono="ngModel" [(ngModel)]="estacion.telefono"
+                required>
+
+            <small *ngIf="!telefono.valid && telefono.touched" class="invalid-feedback d-block">
+                El Nombre no es valido
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="lat">Lat:</label>
+            <input type="text" name="lat" class="form-control" #lat="ngModel" [(ngModel)]="estacion.lat"
+                (keyup)="onKey(lat.value, markerElem)" required>
+
+            <small *ngIf="!lat.valid && lat.touched" class="invalid-feedback d-block">
+                Sin datos de ubicacion
+            </small>
+            
+        </div>
+
+        <div class="form-group">
+            <label for="long">Long:</label>
+            <input type="text" name="long" class="form-control" #long="ngModel" [(ngModel)]="estacion.long"
+                (keyup)="onKeylg(long.value, markerElem)" required>
+
+            <small *ngIf="!long.valid && long.touched" class="invalid-feedback d-block">
+                Sin datos de ubicacion
+            </small>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block" value="Registrate"
+                [disabled]="registerForm.invalid">Registrate</button>
+        </div>
+
+    </form>
+</div>

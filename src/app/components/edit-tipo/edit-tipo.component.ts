@@ -35,7 +35,7 @@ export class EditTipoComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this._tiposEmerService.create(this.tipo, this.token).subscribe(
+    this._tiposEmerService.update(this.tipo, this.token).subscribe(
       response => {
         if (response.status == "succes") {
           this.status = response.status;

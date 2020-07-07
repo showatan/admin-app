@@ -13,6 +13,7 @@ public token: string;
 public status: string;
 public tipos;
 public page_title: string;
+filtroemergencias = '';
 
   constructor(
     private _userService: UserService,

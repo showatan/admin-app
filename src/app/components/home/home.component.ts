@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   public token: string;
   public identity;
   public emergencias;
+  filtroemergencias= '';
 
   constructor(
     private _emergenciasService: EmergenciasService,
@@ -29,7 +30,6 @@ export class HomeComponent implements OnInit {
       response => {
         if (response.status != "error") {
           this.emergencias = response.emergencias;
-          console.log(this.emergencias);
         } else {
           this.status = "error";
         }

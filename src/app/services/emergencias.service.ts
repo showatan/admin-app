@@ -22,5 +22,7 @@ export class EmergenciasService {
   
     return this._http.get(this.url + 'emergencia/list', {headers: headers});
   }
+
+ 
   
 }

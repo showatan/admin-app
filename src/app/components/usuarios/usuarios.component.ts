@@ -16,6 +16,7 @@ export class UsuariosComponent implements OnInit {
   public usuarios;
   public page_title: string;
   config: any;
+  filtroemergencias = '';
 
   constructor(
     private _userService: UserService,
