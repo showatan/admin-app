@@ -16,7 +16,7 @@ export class ImageEmergenciaComponent implements OnInit {
   public tipoEmer;
   public status: string;
   public id_emer;
-  public url;
+  public urlsend;
 
   customStyle = {
     selectButton: {
@@ -72,7 +72,8 @@ export class ImageEmergenciaComponent implements OnInit {
     this._route.params.subscribe(
       params => {
         this.id_emer = +params['id']; 
-        console.log(this.url);
+        this.urlsend = global.url + 'emergencia/upload/'+this.id_emer;
+        console.log(this.urlsend);
       }
     );
 

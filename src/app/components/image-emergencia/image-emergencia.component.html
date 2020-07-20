@@ -9,7 +9,7 @@
 <br>
 <br>
 <hr>
-<image-upload url="https://pacific-lowlands-44228.herokuapp.com/emergencia/upload/51" [style]="customStyle"
+<image-upload [url]="urlsend" [style]="customStyle"
     buttonCaption="Subir" dropBoxMessage="Arrastrar Aqui" clearButtonCaption="CLEAR ME AAAAAAAAAH"
     [partName]="'file0[]'" [headers]="{Authorization: token }" (uploadFinished)="imageUpload($event)">
 </image-upload>
