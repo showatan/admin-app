@@ -1,0 +1,22 @@
+<div class="container justify-content-center">
+    <h1 class="fa-align-center">Subida de Imagenes</h1>
+    <div class="alert alert-success col-md-12">
+        La emergencia se ha creado correctamente
+    </div>
+
+<p>Sube algunas imagenes sobre la emergencia</p>
+
+<br>
+<br>
+<hr>
+<image-upload url="https://pacific-lowlands-44228.herokuapp.com/emergencia/upload/51" [style]="customStyle"
+    buttonCaption="Subir" dropBoxMessage="Arrastrar Aqui" clearButtonCaption="CLEAR ME AAAAAAAAAH"
+    [partName]="'file0[]'" [headers]="{Authorization: token }" (uploadFinished)="imageUpload($event)">
+</image-upload>
+
+<div class="form-group">
+    <a class="btn btn-success btn-lg btn-block" [routerLink]="['/home']"
+        >Finalizar</a>
+</div>
+
+</div>

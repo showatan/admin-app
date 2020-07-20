@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ImageUploadModule } from 'angular2-image-upload';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,11 @@ import { FiltroEmergenciasPipe } from './pipes/filtro-emergencias.pipe';
 import { EstacionesComponent } from './components/estaciones/estaciones.component';
 import { GenEstacionesComponent } from './components/gen-estaciones/gen-estaciones.component';
 import { EditEstacionesComponent } from './components/edit-estaciones/edit-estaciones.component';
+import { GenEmergenciaComponent } from './components/gen-emergencia/gen-emergencia.component';
+import { VerEmergenciaComponent } from './components/ver-emergencia/ver-emergencia.component';
+import { ImageEmergenciaComponent } from './components/image-emergencia/image-emergencia.component';
+
+
 
 
 @NgModule({
@@ -35,7 +41,10 @@ import { EditEstacionesComponent } from './components/edit-estaciones/edit-estac
     FiltroEmergenciasPipe,
     EstacionesComponent,
     GenEstacionesComponent,
-    EditEstacionesComponent
+    EditEstacionesComponent,
+    GenEmergenciaComponent,
+    VerEmergenciaComponent,
+    ImageEmergenciaComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +52,8 @@ import { EditEstacionesComponent } from './components/edit-estaciones/edit-estac
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    ImageUploadModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

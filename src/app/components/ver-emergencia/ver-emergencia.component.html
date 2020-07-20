@@ -1,0 +1,13 @@
+<div *ngIf="!emergencia">
+    <p>
+        cargando....
+    </p>
+</div>
+
+
+<div class="container" *ngIf="emergencia">
+    <h1>{{emergencia.titulo}}</h1>
+
+    <p>{{emergencia.detalles}}</p>
+    <p> Creador: {{emergencia.user.nombre + emergencia.user.last_name}}</p>
+</div>

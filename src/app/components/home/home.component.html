@@ -7,14 +7,19 @@
 
     </form>
 
-
+    <div class="col-md-3 float-right">
+        <a class="btn btn-success btn-md btn-block" [routerLink]="['/emergencia/create']">+ Crear Emergencia</a>
+    </div>
+    <br>
 
     <div class="card mt-5" *ngFor="let emergencia of emergencias | filtroEmergencias:filtroemergencias">
         <h5 class="card-header">{{ emergencia.titulo | uppercase}}</h5>
         <div class="card-body">
             <h5 class="card-title">{{ emergencia.tipo.titulo }}</h5>
             <p class="card-text">{{ emergencia.detalles }}</p>
-            <a href="#" class="btn btn-primary">{{ emergencia.fecha}}</a>
+            <p class="card-text"><small class="text-muted">Fecha: {{emergencia.fecha}} Hora: {{emergencia.hora}}</small></p>
+            <a href="#" [routerLink]="['/emergencia/view', emergencia.id]" class="card-link">Ver</a>
+            <a href="#" class="card-link">Editar</a>
         </div>
     </div>
 

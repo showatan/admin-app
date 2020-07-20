@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="col-md-12 mt-3">
+        <h1>{{page_title}}</h1>
+
+        <google-map width="100%" height="300px" [center]="center" [zoom]="zoom">
+
+            <map-marker #markerElem [position]="position" [options]="drag" (mapDragend)="click(markerElem)">
+            </map-marker>
+        </google-map>
+
+        <!--Mensajes de ALerta-->
+        <div class="alert alert-success col-md-12" *ngIf="status == 'succes'">
+            El registro se ha creado correctamente, <a [routerLink]="['/emergencia/tipos']">Regresar a Listado</a>
+        </div>
+
+        <div class="alert alert-danger col-md-12" *ngIf="status == 'error'">
+            Error en el registro, Vuelve a intentarlo.
+        </div>
+        <!--Creamos nuestro Formulario-->
+        <form class="col-md-12 ml-0 pl-0" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" autocomplete="off">
+            <div class="form-group">
+                <label for="titulo">Titulo</label>
+                <input type="text" name="titulo" class="form-control" #titulo="ngModel"
+                    [(ngModel)]="new_emergencia.titulo" required>
+
+                <small *ngIf="!titulo.valid && titulo.touched" class="invalid-feedback d-block">
+                    El Titulo no es valido
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="detalles">Detalles</label>
+                <input type="text" name="detalles" class="form-control" #detalles="ngModel"
+                    [(ngModel)]="new_emergencia.detalles">
+
+                <small *ngIf="!detalles.valid && detalles.touched" class="invalid-feedback d-block">
+                    El detalle no es valido
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input type="date" name="fecha" class="form-control" #fecha="ngModel"
+                    [(ngModel)]="new_emergencia.fecha">
+
+                <small *ngIf="!fecha.valid && fecha.touched" class="invalid-feedback d-block">
+                    El detalle no es valido
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="hora">Hora</label>
+                <input type="time" name="hora" class="form-control" #hora="ngModel" [(ngModel)]="new_emergencia.hora">
+
+                <small *ngIf="!hora.valid && hora.touched" class="invalid-feedback d-block">
+                    El detalle no es valido
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="tipo">Estación</label>
+                <select name="tipo" #idtipo="ngModel" [(ngModel)]="new_emergencia.idtipo" class="form-control">
+                    <option *ngFor="let tipo of tipoEmer" value="{{ tipo.id }}">{{ tipo.titulo }}</option>
+                </select>
+            </div>
+
+          <!-- <div class="form-group">
+                <label for="image">Avatar</label>
+                <div class="form-group">
+                    <label for="file">Buscar Archivos</label>
+                    <input type="file"
+                           id="file"
+                           (change)="avatarUpload($event.target.files)"
+                           multiple>
+                </div>
+            </div> -->
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-lg btn-block" value="Registrate"
+                    [disabled]="registerForm.invalid">Crear</button>
+            </div>
+
+        </form>
+    </div>
+</div>

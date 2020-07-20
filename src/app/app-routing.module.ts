@@ -11,6 +11,9 @@ import { EditTipoComponent } from './components/edit-tipo/edit-tipo.component';
 import { EstacionesComponent } from './components/estaciones/estaciones.component';
 import { GenEstacionesComponent } from './components/gen-estaciones/gen-estaciones.component';
 import { EditEstacionesComponent } from './components/edit-estaciones/edit-estaciones.component';
+import { GenEmergenciaComponent } from './components/gen-emergencia/gen-emergencia.component';
+import { VerEmergenciaComponent } from './components/ver-emergencia/ver-emergencia.component';
+import { ImageEmergenciaComponent } from './components/image-emergencia/image-emergencia.component';
 
 
 const routes: Routes = [
@@ -28,6 +31,10 @@ const routes: Routes = [
   {path: 'estaciones', component: EstacionesComponent},
   {path: 'estaciones/create', component: GenEstacionesComponent},
   {path: 'estaciones/update/:id', component: EditEstacionesComponent},
+  {path: 'emergencia/create', component: GenEmergenciaComponent},
+  {path: 'emergencia/view/:id', component: VerEmergenciaComponent},
+  {path: 'emergencia/image/:id', component: ImageEmergenciaComponent},
+  
 
   
 ];
