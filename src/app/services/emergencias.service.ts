@@ -34,22 +34,11 @@ export class EmergenciasService {
   postFile(emergencia, token): Observable<any> {
     let json = JSON.stringify(emergencia);
     let params = 'json=' + json;
-    var formData = new FormData();
+    
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-      .set('Authorization', token);
+                                  .set('Authorization', token);
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': token,
-        'Content-Type': 'multipart/form-data'
-      })
-    };
-
-   
-    formData.append("json", json);
-
-    console.log(params);
-
+  
     return this._http.post(this.url + 'emergencia/create', params, {headers: headers});
   }
 

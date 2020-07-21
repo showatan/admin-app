@@ -10,6 +10,7 @@ import { MapMarker } from '@angular/google-maps';
 import { global } from '../../services/global';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 
+
 @Component({
   selector: 'app-gen-emergencia',
   templateUrl: './gen-emergencia.component.html',
@@ -23,8 +24,17 @@ export class GenEmergenciaComponent implements OnInit {
   public identity;
   public tipoEmer;
   public status: string;
-
   public marker;
+
+  //froala editor
+  public froala_options: Object = {
+    charCounterCount: true,
+    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+  };
+  //fin conf
 
   fileToUpload: File = null;
 
@@ -58,7 +68,6 @@ export class GenEmergenciaComponent implements OnInit {
     console.log(this.new_emergencia);
     this._emergenciasService.postFile(this.new_emergencia,this.token).subscribe(
       response => {
-        console.log(response);
         this._router.navigate(['/emergencia/image/', response.emergencia.id]);
 
       }, error => {

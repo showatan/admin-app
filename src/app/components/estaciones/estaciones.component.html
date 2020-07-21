@@ -1,43 +1,46 @@
 <div class="container">
-        <h2 class="mt-5">{{ page_title }}</h2>
-        <br>
-        <form>
-    
-            <div class="form-group">
-                <input type="text" placeholder="Buscar..." name="filtrar" class="form-control"
-                    [(ngModel)]="filtroemergencias">
-            </div>
-    
-        </form>
-        <div class="col-md-3 float-right">
-            <a class="btn btn-success btn-md btn-block" [routerLink]="['/estaciones/create']">+ Crear estacion</a>
+    <h2 class="mt-5">{{ page_title }}</h2>
+    <br>
+    <form>
+
+        <div class="form-group">
+            <input type="text" placeholder="Buscar..." name="filtrar" class="form-control"
+                [(ngModel)]="filtroemergencias">
         </div>
-        <br>
-        <table class="table mt-5">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Direccion</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let estacion of estaciones| filtroEmergencias:filtroemergencias, index as id">
-                    <th scope="row">{{ id +1 }}</th>
-                    <td>{{ estacion.nombre }}</td>
-                    <td>{{ estacion.direccion }}</td>
-                    <td>{{ estacion.telefono }}</td>
-                    <td>
-                        <!--Botones de accion-->
-    
-                        <a [routerLink]="['/estaciones/update', estacion.id]" class="btn btn-warning mr-2">Editar</a>
-                        <a [routerLink]="['/emergencia/tipos/delete', estacion.id]" class="btn btn-danger">Borrar</a>
-    
-    
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+
+    </form>
+    <div class="col-md-3 float-right">
+        <a class="btn btn-success btn-md btn-block" [routerLink]="['/estaciones/create']">+ Crear estacion</a>
     </div>
+    <br>
+    <table class="table mt-5">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let estacion of estaciones| filtroEmergencias:filtroemergencias | paginate: { itemsPerPage: 10, currentPage: p1, id: 'first' }, index as id">
+                <th scope="row">{{ id +1 }}</th>
+                <td>{{ estacion.nombre }}</td>
+                <td>{{ estacion.direccion }}</td>
+                <td>{{ estacion.telefono }}</td>
+                <td>
+                    <!--Botones de accion-->
+
+                    <a [routerLink]="['/estaciones/update', estacion.id]" class="btn btn-warning mr-2">Editar</a>
+                    <a [routerLink]="['/emergencia/tipos/delete', estacion.id]" class="btn btn-danger">Borrar</a>
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <pagination-controls (pageChange)="p1 = $event" id="first"> </pagination-controls>
+</div>

@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   public identity;
   public emergencias;
   filtroemergencias= '';
+  p1: number = 1;
 
   constructor(
     private _emergenciasService: EmergenciasService,
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
       response => {
         if (response.status != "error") {
           this.emergencias = response.emergencias;
+          this.emergencias.reverse();
         } else {
           this.status = "error";
         }

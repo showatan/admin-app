@@ -15,6 +15,7 @@ public status: string;
 public estaciones;
 public page_title: string;
 filtroemergencias = '';
+p1: number = 1;
 
   constructor(
     private _estacionService: EstacionService,

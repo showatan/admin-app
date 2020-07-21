@@ -14,6 +14,7 @@ public status: string;
 public tipos;
 public page_title: string;
 filtroemergencias = '';
+p1: number = 1;
 
   constructor(
     private _userService: UserService,

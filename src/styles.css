@@ -27,3 +27,10 @@
     background-color: #F2F2F2;
     cursor: pointer;
   }
+  
+.fifty-chars {
+    width: 50ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

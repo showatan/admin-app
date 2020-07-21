@@ -42,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of usuarios| filtroEmergencias:filtroemergencias, index as id ">
+                <tr *ngFor="let user of usuarios| filtroEmergencias:filtroemergencias | paginate: { itemsPerPage: 10, currentPage: p1, id: 'first' }, index as id ">
                     <th scope="row">{{ id +1 }}</th>
                     <td>{{ user.nombre }}</td>
                     <td>{{ user.last_name }}</td>
@@ -61,5 +61,7 @@
 
 
     </div>
+    <br>
+    <pagination-controls (pageChange) = "p1 = $event" id = "first"> </pagination-controls>
 
 </div>

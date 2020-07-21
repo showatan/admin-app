@@ -3,11 +3,45 @@
         cargando....
     </p>
 </div>
-
+<br><br>
 
 <div class="container" *ngIf="emergencia">
     <h1>{{emergencia.titulo}}</h1>
-
-    <p>{{emergencia.detalles}}</p>
-    <p> Creador: {{emergencia.user.nombre + emergencia.user.last_name}}</p>
+    <br>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <td class="font-weight-bold">Creador Por: </td>
+                <td>{{emergencia.user.nombre +' '+ emergencia.user.last_name}}</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Fecha y Hora: </td>
+                <td>{{emergencia.fecha + emergencia.hora}}</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Tipo: </td>
+                <td>{{emergencia.tipo.titulo}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <h5>Detalles de la emergencia:</h5>
+    <p [innerHtml]="emergencia.detalles"></p>
+    <br>
+    <h5>Ubicacion:</h5>
+    <div class="border border-secondary rounded">
+        <google-map width="100%" height="300px" [center]="center" [zoom]="zoom">
+            <map-marker #markerElem [position]="position" [options]="drag">
+            </map-marker>
+        </google-map>
+    </div>
+    <br>
+    <br>
+    <h5>Imagenes de la emergencia:</h5>
+    <div class="row mb-5">
+        <div class="col-md-4 mt-2" *ngFor="let imagenes of emergencia.imagenes">
+            <img class="img-fluid border border-secondary rounded" src="https://pacific-lowlands-44228.herokuapp.com/emergencia/image/{{imagenes.nombre}}">
+        </div>
+    </div>
+   
 </div>

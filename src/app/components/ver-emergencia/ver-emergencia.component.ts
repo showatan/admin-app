@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EmergenciasService } from '../../services/emergencias.service';
 import { UserService } from '../../services/user.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { global } from '../../services/global';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-ver-emergencia',
@@ -14,6 +16,17 @@ export class VerEmergenciaComponent implements OnInit {
   public token: string;
   public identity;
   public emergencia;
+  public url_img = global.url;
+
+  //partes del mapa
+  center = {lat: 14.635700976288001, lng: -90.51143646240234 };
+  zoom = 15;
+  display?: google.maps.LatLngLiteral;
+
+
+  drag = {draggable:false}
+  public position = this.center;
+  //finaliza conf del mapa
 
   constructor(
     private _emergenciasService: EmergenciasService,
@@ -38,6 +51,8 @@ export class VerEmergenciaComponent implements OnInit {
             response => {
               if (response.status != "error") {
                 this.emergencia = response.emergencia;
+                this.center = {lat: parseFloat(this.emergencia['ubicacion']['0'].lat), lng: parseFloat(this.emergencia['ubicacion']['0'].long)};
+                this.position = this.center;
               } else {
                 this.status = "error";
               }

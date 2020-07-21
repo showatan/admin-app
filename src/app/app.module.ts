@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ImageUploadModule } from 'angular2-image-upload';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,7 +54,9 @@ import { ImageEmergenciaComponent } from './components/image-emergencia/image-em
     FormsModule,
     NgxPaginationModule,
     GoogleMapsModule,
-    ImageUploadModule.forRoot()
+    ImageUploadModule.forRoot(),
+    FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,4 @@
+
 <div class="container mt-5">
     <form>
 
@@ -12,15 +13,18 @@
     </div>
     <br>
 
-    <div class="card mt-5" *ngFor="let emergencia of emergencias | filtroEmergencias:filtroemergencias">
+    <div class="card mt-5" *ngFor="let emergencia of emergencias | filtroEmergencias:filtroemergencias | paginate: { itemsPerPage: 5, currentPage: p1, id: 'first' }">
         <h5 class="card-header">{{ emergencia.titulo | uppercase}}</h5>
         <div class="card-body">
             <h5 class="card-title">{{ emergencia.tipo.titulo }}</h5>
-            <p class="card-text">{{ emergencia.detalles }}</p>
+            <p class="card-text fifty-chars"  [innerHtml]="">{{emergencia.detalles}}</p>
             <p class="card-text"><small class="text-muted">Fecha: {{emergencia.fecha}} Hora: {{emergencia.hora}}</small></p>
             <a href="#" [routerLink]="['/emergencia/view', emergencia.id]" class="card-link">Ver</a>
             <a href="#" class="card-link">Editar</a>
         </div>
     </div>
+
+    <br>
+    <pagination-controls (pageChange) = "p1 = $event" id = "first"> </pagination-controls>
 
 </div>
