@@ -34,3 +34,18 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+/*--------------text area autosize----------------------*/
+
+textarea{  
+    /* box-sizing: padding-box; */
+    overflow:hidden;
+    /* demo only: */
+    padding:10px;
+    width:250px;
+    font-size:14px;
+    margin:50px auto;
+    display:block;
+    border-radius:10px;
+    border:6px solid #556677;
+}

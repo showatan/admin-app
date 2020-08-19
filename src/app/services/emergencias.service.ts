@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { global } from './global';
-
+import { AxiosInstance} from 'axios';
 @Injectable({
   providedIn: 'root'
 })
@@ -34,6 +34,7 @@ export class EmergenciasService {
   postFile(emergencia, token): Observable<any> {
     let json = JSON.stringify(emergencia);
     let params = 'json=' + json;
+    console.log(params);
     
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
                                   .set('Authorization', token);

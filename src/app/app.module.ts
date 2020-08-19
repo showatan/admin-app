@@ -4,7 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ImageUploadModule } from 'angular2-image-upload';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { CKEditorModule} from 'ckeditor4-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +15,6 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RegisterComponent } from './components/register/register.component';
 import { TiposEmergenciaComponent } from './components/tipos-emergencia/tipos-emergencia.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { GenTipoComponent } from './components/gen-tipo/gen-tipo.component';
 import { EditTipoComponent } from './components/edit-tipo/edit-tipo.component';
 import { FiltroEmergenciasPipe } from './pipes/filtro-emergencias.pipe';
@@ -24,8 +24,6 @@ import { EditEstacionesComponent } from './components/edit-estaciones/edit-estac
 import { GenEmergenciaComponent } from './components/gen-emergencia/gen-emergencia.component';
 import { VerEmergenciaComponent } from './components/ver-emergencia/ver-emergencia.component';
 import { ImageEmergenciaComponent } from './components/image-emergencia/image-emergencia.component';
-
-
 
 
 @NgModule({
@@ -55,8 +53,9 @@ import { ImageEmergenciaComponent } from './components/image-emergencia/image-em
     NgxPaginationModule,
     GoogleMapsModule,
     ImageUploadModule.forRoot(),
-    FroalaEditorModule.forRoot(), 
-    FroalaViewModule.forRoot()
+    CKEditorModule
+  
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

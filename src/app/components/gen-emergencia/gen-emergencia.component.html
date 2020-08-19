@@ -30,9 +30,7 @@
 
             <div class="form-group">
                 <label for="detalles">Detalles</label>
-                <textarea [froalaEditor]="froala_options" name="detalles" class="form-control" #detalles="ngModel"
-                    [(froalaModel)]="new_emergencia.detalles" [(ngModel)]="new_emergencia.detalles" required></textarea>
-
+                <textarea [(ngModel)]="new_emergencia.detalles" name="detalles" class="form-control" id="detalles" #detalles="ngModel"></textarea>
                 <small *ngIf="!detalles.valid && detalles.touched" class="invalid-feedback d-block">
                     El detalle no es valido
                 </small>
@@ -60,23 +58,28 @@
             </div>
 
             <div class="form-group">
-                <label for="tipo">Estación</label>
+                <label for="tipo">Tipo</label>
                 <select name="tipo" #idtipo="ngModel" [(ngModel)]="new_emergencia.idtipo" class="form-control">
                     <option *ngFor="let tipo of tipoEmer" value="{{ tipo.id }}">{{ tipo.titulo }}</option>
                 </select>
             </div>
 
-            <!-- <div class="form-group">
-                <label for="image">Avatar</label>
-                <div class="form-group">
-                    <label for="file">Buscar Archivos</label>
-                    <input type="file"
-                           id="file"
-                           (change)="avatarUpload($event.target.files)"
-                           multiple>
-                </div>
-            </div> -->
+            <div class="form-group">
+                <label for="carro">Carro</label>
+                <select name="carro" #idcarro="ngModel" [(ngModel)]="new_emergencia.idcarro" class="form-control">
+                    <option *ngFor="let carro of carros" value="{{ carro.id }}">{{ carro.nombre }}</option>
+                </select>
+            </div>
+           
+            <div class="form-group">
+                <label for="kilometraje">Kilometraje</label>
+                <input type="number" name="kilometraje" class="form-control" #kilometraje="ngModel"
+                    [(ngModel)]="new_emergencia.kilometraje" required>
 
+                <small *ngIf="!kilometraje.valid && kilometraje.touched" class="invalid-feedback d-block">
+                    El Kilomtreaje no es valido
+                </small>
+            </div>
 
             <div class="form-group">
                 <button type="submit" class="btn btn-success btn-lg btn-block" value="Registrate"

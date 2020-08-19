@@ -5,10 +5,11 @@ import { TipoEmer } from '../../models/tipoEmer';
 import { UserService } from '../../services/user.service';
 import { Emergencia } from '../../models/emergencia';
 import { EmergenciasService } from '../../services/emergencias.service';
-import { identifierModuleUrl } from '@angular/compiler';
 import { MapMarker } from '@angular/google-maps';
 import { global } from '../../services/global';
-import { Router, ActivatedRoute, Params} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { CarroService } from '../../services/carro.service';
+
 
 
 @Component({
@@ -25,16 +26,13 @@ export class GenEmergenciaComponent implements OnInit {
   public tipoEmer;
   public status: string;
   public marker;
+  public jsonDoc;
+  public carros;
 
-  //froala editor
-  public froala_options: Object = {
-    charCounterCount: true,
-    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-  };
-  //fin conf
+  //ckeditor config
+
+
+  //end ckeditor config
 
   fileToUpload: File = null;
 
@@ -54,13 +52,14 @@ export class GenEmergenciaComponent implements OnInit {
     private _userService: UserService,
     private _tipoEmerService: TiposEmerService,
     private _router: Router,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _carroService: CarroService
   ) {
     this.loadUser();
 
     this.page_title = "Crear Emergencia";
 
-    this.new_emergencia = new Emergencia(1, '', '', null, null, this.identity.sub, 1, '', '');
+    this.new_emergencia = new Emergencia(1, '', '', null, null, this.identity.sub, 1, 1,0, '', '');
 
   }
 
@@ -74,11 +73,26 @@ export class GenEmergenciaComponent implements OnInit {
         this.status = "error";
         console.log(<any>error);
       });
-
   }
 
   ngOnInit(): void {
+    /*text area auto size*/
+    var textarea = document.querySelector('textarea');
+
+    textarea.addEventListener('keydown', autosize);
+
+    function autosize() {
+      var el = this;
+      setTimeout(function () {
+        el.style.cssText = 'height:auto; padding:0';
+        // for box-sizing other than "content-box" use:
+        // el.style.cssText = '-moz-box-sizing:content-box';
+        el.style.cssText = 'height:' + el.scrollHeight + 'px';
+      }, 0);
+    }
+    //End text area editing
     this.getTipos();
+    this.getCarros();
     this.center = { lat: parseFloat(this.identity.estacion.lat), lng: parseFloat(this.identity.estacion.long) };
   }
 
@@ -117,5 +131,20 @@ export class GenEmergenciaComponent implements OnInit {
 
   }
 
+  getCarros() {
+    this._carroService.getcarros(this.token).subscribe(
+      response => {
+        if (response.status != "error") {
+          this.carros = response.carros;
+        } else {
+          this.status = "error";
+        }
+      },
+      error => {
+        this.status = "error";
+        console.log(<any>error);
+      }
+    )
+  }
 
 }

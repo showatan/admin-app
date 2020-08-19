@@ -10,6 +10,8 @@ export class Emergencia{
         public hora: Time,
         public idusuario: number,
         public idtipo: number,
+        public idcarro: number,
+        public kilometraje: number,
         public long: string,
         public lat: string
     ){}
