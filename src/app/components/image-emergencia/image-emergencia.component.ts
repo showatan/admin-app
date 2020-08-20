@@ -17,6 +17,7 @@ export class ImageEmergenciaComponent implements OnInit {
   public status: string;
   public id_emer;
   public urlsend;
+  public btnfinalizar = false;
 
   customStyle = {
     selectButton: {
@@ -83,4 +84,16 @@ export class ImageEmergenciaComponent implements OnInit {
     console.log(data);
   
   }
+  onUploadStateChanged(state: boolean) {
+    if (state==false){
+      this.btnfinalizar = true;
+    }
+    if (state==true){
+      this.btnfinalizar = false;
+    }
+    console.log(state);
+  }
+
+  
+  
 }

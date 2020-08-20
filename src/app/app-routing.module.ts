@@ -14,6 +14,7 @@ import { EditEstacionesComponent } from './components/edit-estaciones/edit-estac
 import { GenEmergenciaComponent } from './components/gen-emergencia/gen-emergencia.component';
 import { VerEmergenciaComponent } from './components/ver-emergencia/ver-emergencia.component';
 import { ImageEmergenciaComponent } from './components/image-emergencia/image-emergencia.component';
+import { CarrosComponent } from './components/carros/carros.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: 'emergencia/create', component: GenEmergenciaComponent},
   {path: 'emergencia/view/:id', component: VerEmergenciaComponent},
   {path: 'emergencia/image/:id', component: ImageEmergenciaComponent},
+  {path: 'carros', component: CarrosComponent}
   
 
   

@@ -49,3 +49,9 @@ textarea{
     border-radius:10px;
     border:6px solid #556677;
 }
+
+
+  /*----------------------tamaño del box de file uploader---------------*/
+  .afu-dragndrop-box{
+    width: 100% !important;
+}

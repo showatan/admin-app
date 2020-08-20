@@ -11,11 +11,12 @@
 <hr>
 <image-upload [url]="urlsend" [style]="customStyle"
     buttonCaption="Subir" dropBoxMessage="Arrastrar Aqui" clearButtonCaption="CLEAR ME AAAAAAAAAH"
-    [partName]="'file0[]'" [headers]="{Authorization: token }" (uploadFinished)="imageUpload($event)">
+    [partName]="'file0'" [headers]="{Authorization: token }" (uploadFinished)="imageUpload($event)"
+    (uploadStateChanged)="onUploadStateChanged($event)">
 </image-upload>
 
 <div class="form-group">
-    <a class="btn btn-success btn-lg btn-block" [routerLink]="['/home']"
+    <a class="btn btn-success btn-lg btn-block" [routerLink]="['/home']" *ngIf="btnfinalizar"
         >Finalizar</a>
 </div>
 

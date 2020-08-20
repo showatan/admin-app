@@ -16,7 +16,10 @@
           <a class="nav-link" [routerLink]="['/emergencia/tipos']">Tipos Emergencias</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/estaciones']">Estaciones de Bomberos</a>
+          <a class="nav-link" [routerLink]="['/estaciones']">Estaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/carros']">Carros</a>
         </li>
 
       </ul>
@@ -55,15 +58,16 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<div>
+<div class="scrollable">
   <router-outlet></router-outlet>
+  <br><br><br>
 </div>
 
 
 
 <!-- Footer -->
-<footer id="sticky-footer" class="py-4 bg-dark text-white-50 mt-8">
-  <div class="container text-center">
+<footer id="sticky-footer" class="bg-dark text-white-50 footer">
+  <div class="text-center">
     <small>Copyright &copy; Moises Chavez</small>
   </div>
 </footer>
